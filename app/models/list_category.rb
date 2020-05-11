@@ -1,3 +1,3 @@
-class ListCategory < Active::Record
+class ListCategory < ActiveRecord::Base
 
 end
