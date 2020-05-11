@@ -1,0 +1,3 @@
+class ListController < ApplicationController
+
+end
