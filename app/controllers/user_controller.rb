@@ -1,6 +1,8 @@
 class UserController < ApplicationController
 
     get '/home' do
+        @lists = List.all
+        @categories = Category.all
         if logged_in?
             @user = current_user
             erb :'users/index'
@@ -13,12 +15,13 @@ class UserController < ApplicationController
         if logged_in?
             redirect '/home'
         else
-            erb :'users/index'
+            erb :'users/signup'
         end
     end
 
     post '/signup' do
         
+        redirect '/login'
     end
 
     get '/login' do
