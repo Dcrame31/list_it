@@ -1,0 +1,14 @@
+<!DOCTYPE html> 
+    <head>
+    </head>
+
+    <body>
+        <h1>Welcome, <%= @user.username%>!</h1>
+            <% @categories.each do |category| %>
+            <p><a href="/categories/<%= category.id %>"><%= category.name %></a></p>
+            
+            <h3><a href="/categories/new">Create a new list!</a></h3>
+            <a href="/categories/new">Create a new list!</a>
+
+    </body>
+</html>
