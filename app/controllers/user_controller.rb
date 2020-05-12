@@ -5,12 +5,16 @@ class UserController < ApplicationController
             @user = current_user
             erb :'users/index'
         else
-            redirect '/'
+            redirect '/login'
         end
     end
 
     get '/signup' do
-        
+        if logged_in?
+            redirect '/home'
+        else
+            erb :'users/index'
+        end
     end
 
     post '/signup' do
