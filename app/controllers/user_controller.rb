@@ -20,8 +20,12 @@ class UserController < ApplicationController
     end
 
     post '/signup' do
-        
-        redirect '/login'
+        if !params[user].nil?
+            @user = User.create(params)
+            redirect '/login'
+        else
+            redirect '/signup'
+        end
     end
 
     get '/login' do
