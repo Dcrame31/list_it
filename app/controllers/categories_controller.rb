@@ -13,4 +13,8 @@ class CategoryController < ApplicationController
         end
     end
 
+    get '/categories/:slug' do
+        
+    end
+
 end
