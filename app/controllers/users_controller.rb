@@ -1,4 +1,9 @@
-class UserController < ApplicationController
+require 'sinatra/base'
+require 'rack-flash'
+
+class UsersController < ApplicationController
+    enable :sessions
+    use Rack::Flash
 
     get '/home' do
         @lists = List.all
@@ -16,7 +21,7 @@ class UserController < ApplicationController
             @user = current_user
             redirect '/home'
         else
-            erb :'users/signup'
+            erb :'/users/signup'
         end
     end
 
@@ -45,12 +50,23 @@ class UserController < ApplicationController
 
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
+            flash[:message] = "You are now logged in"
             redirect to '/home'
+        elsif !User.all.include?(params[:username])
+            flash[:notice] = "Username does not exist"
+            redirect '/'
         else
             redirect '/login'
         end
     end
 
-    
+    get '/logout' do
+        if logged_in?
+            session.clear
+            redirect '/'
+        else
+            redirect '/home'
+        end
+    end
 
 end

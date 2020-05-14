@@ -1,10 +1,10 @@
 default: &default
-  adapter: 'sqlite3'
-  database: 'db/development.sqlite'
+adapter: 'sqlite3'
+database: 'db/development.sqlite'
 
 development:
-  <<: *default
+<<: *default
 
 test:
-  <<: *default
-  database: 'db/test.sqlite'
+<<: *default
+database: 'db/test.sqlite'
