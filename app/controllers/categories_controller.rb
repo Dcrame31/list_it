@@ -10,9 +10,9 @@ class CategoriesController < ApplicationController
         end
     end
 
-    get '/categories/:slug' do
+    get '/categories/:id' do
         if logged_in?
-            @category = Category.find_by_slug(params[:slug])
+            @user = current_user
             erb :'categories/show'
         else
             redirect '/login'
