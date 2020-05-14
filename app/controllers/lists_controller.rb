@@ -11,6 +11,7 @@ class ListsController < ApplicationController
     end
 
     get '/lists/new' do
+        @categories = Category.all
         if logged_in?
             erb :'lists/new'
         else

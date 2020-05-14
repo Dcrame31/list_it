@@ -7,10 +7,22 @@
             <h1>Create a new list</h1>     
         </header>
 
+        <div>   
+            <form action="/lists" method="POST">
+                <p><h2>List name:</h2> <input type="text" name="list[name]"></p>
+                <p><h2>Things to do: </h2> </p>
+                <p><input type="text" name="list[content][]"></p>
+                <p><input type="text" name="list[content][]"></p>
+                <p><input type="text" name="list[content][]"></p>
+                <p><input type="text" name="list[content][]"></p>
+                <p><input type="text" name="list[content][]"></p>
 
-
-
-
-
+                <p><h2>Choose from existing categories or create a new one: </h2</p>
+                <p><% @categories.each do |category| %>
+                <li><input type="checkbox" id="<%= category.slug %>" name="user[category_ids][]"><%= category.name %></li>
+                <% end %>
+                <p><input type="submit" value="Create List"></p>
+            </form>
+        </div>
     </body>
 </html>
