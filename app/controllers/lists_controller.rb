@@ -1,7 +1,6 @@
 class ListsController < ApplicationController
 
     get '/lists' do
-        @lists = List.all
         if logged_in?
             @user = current_user
             erb :'lists/index'
@@ -11,8 +10,8 @@ class ListsController < ApplicationController
     end
 
     get '/lists/new' do
-        @categories = Category.all
         if logged_in?
+            @user = current_user
             erb :'lists/new'
         else
             redirect '/login'
@@ -20,30 +19,30 @@ class ListsController < ApplicationController
     end
 
     post '/lists' do
-        @list = List.create(params[:list])
+        @list = List.create(params["list"])
 
-        if !params[:category][:name].empty?
+        if !params["category"]["name"].empty?
             @list.categories << Category.create(name: params[:category][:name])
         end
         @list.save
 
-        redirect "/lists/#{@list.slug}"
+        redirect "/lists/#{@list.id}"
     end
 
-    get '/lists/:slug' do
-        @list = List.find_by_slug(params[:slug])
+    get '/lists/:id' do
+        @list = List.find(params[:id])
         erb :'/lists/show'
     end
 
-    get '/lists/:slug/edit' do
+    get '/lists/:id/edit' do
         
     end
 
-    patch '/lists/:slug' do
+    patch '/lists/:id' do
         
     end
 
-    delete '/lists/:slug' do |variable|
+    delete '/lists/:id' do |variable|
         
     end
 

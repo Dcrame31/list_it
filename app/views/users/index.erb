@@ -9,12 +9,12 @@
 
     <body>
         <h1>Welcome, <%= @user.username%>!</h1>
-
-            <% @lists.each do |list| %>
+            <h3>Lists</h3>
+            <% @user.lists.each do |list| %>
             <li><a href="/lists/<%= list.id %>"><%= list.name %></a></li>
             <% end %>
-
-            <% @categories.each do |category| %>
+            <h3>Categories</h3>
+            <% @user.categories.each do |category| %>
             <li><a href="/categories/<%= category.id %>"><%= category.name %></a></li>
             <% end %>
             

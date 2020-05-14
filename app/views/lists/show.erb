@@ -4,13 +4,11 @@
 
     <body>
         <h1><%= @list.name %></h1>
-
-
-
-
-
-
-
+        <p><%= @list.content%></p>
+        
+        <p><% @list.categories.each do |category| %></p>
+        <%= category.name %>
+        <% end %>   
     </body> 
 
 
