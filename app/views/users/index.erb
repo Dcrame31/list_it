@@ -1,14 +1,28 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
+
 <!DOCTYPE html> 
     <head>
     </head>
 
     <body>
         <h1>Welcome, <%= @user.username%>!</h1>
+
+            <% @lists.each do |list| %>
+            <li><a href="/lists/<%= list.id %>"><%= list.name %></a></li>
+            <% end %>
+
             <% @categories.each do |category| %>
-            <p><a href="/categories/<%= category.id %>"><%= category.name %></a></p>
+            <li><a href="/categories/<%= category.id %>"><%= category.name %></a></li>
+            <% end %>
             
-            <h3><a href="/categories/new">Create a new list!</a></h3>
-            <a href="/categories/new">Create a new list!</a>
+            <h3><a href="/lists/new">Create a new list!</a></h3>
+
+            <footer>
+                <p><a href="/logout">Log out</a></p>
+            </footer>
 
     </body>
 </html>

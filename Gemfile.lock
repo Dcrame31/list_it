@@ -14,6 +14,7 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    bcrypt (3.1.13)
     bond (0.5.1)
     capybara (3.32.1)
       addressable
@@ -31,7 +32,7 @@ GEM
     eventmachine (1.2.7)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
-    method_source (0.9.2)
+    method_source (1.0.0)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.0)
@@ -39,13 +40,13 @@ GEM
       ruby2_keywords (~> 0.0.1)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
-    pry (0.12.2)
-      coderay (~> 1.1.0)
-      method_source (~> 0.9.0)
-    pry-nav (0.3.0)
-      pry (>= 0.9.10, < 0.13.0)
+    pry (0.13.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
     public_suffix (4.0.5)
     rack (2.2.2)
+    rack-flash3 (1.0.5)
+      rack
     rack-protection (2.0.8.1)
       rack
     rack-test (1.1.0)
@@ -107,11 +108,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord (= 6.0.3)
+  activerecord (~> 6.0.0)
+  bcrypt
   capybara
   database_cleaner
   pry
-  pry-nav
+  rack-flash3
   rack-test
   rake
   require_all
@@ -119,7 +121,7 @@ DEPENDENCIES
   shotgun
   sinatra
   sinatra-activerecord
-  sqlite3 (~> 1.4)
+  sqlite3
   thin
   tux
 

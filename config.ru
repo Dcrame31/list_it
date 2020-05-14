@@ -1,7 +1,7 @@
-require_relative './config/environment'
+require './config/environment.rb'
 
 
 use Rack::MethodOverride
-use UserController
+use UsersController
 
 run ApplicationController
