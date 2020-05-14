@@ -20,6 +20,23 @@ class ListsController < ApplicationController
     end
 
     post '/lists' do
+        if logged_in?
+            
+    end
+
+    get '/lists/:slug' do
+        
+    end
+
+    get '/lists/:slug/edit' do
+        
+    end
+
+    patch '/lists/:slug' do
+        
+    end
+
+    delete '/lists/:slug' do |variable|
         
     end
 

@@ -21,6 +21,7 @@
                 <p><% @categories.each do |category| %>
                 <li><input type="checkbox" id="<%= category.slug %>" name="user[category_ids][]"><%= category.name %></li>
                 <% end %>
+                <p><h2><input type="text" name="category[name]"></h2>
                 <p><input type="submit" value="Create List"></p>
             </form>
         </div>
