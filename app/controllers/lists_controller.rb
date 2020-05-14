@@ -20,12 +20,19 @@ class ListsController < ApplicationController
     end
 
     post '/lists' do
-        if logged_in?
-            
+        @list = List.create(params[:list])
+
+        if !params[:category][:name].empty?
+            @list.categories << Category.create(name: params[:category][:name])
+        end
+        @list.save
+
+        redirect "/lists/#{@list.slug}"
     end
 
     get '/lists/:slug' do
-        
+        @list = List.find_by_slug(params[:slug])
+        erb :'/lists/show'
     end
 
     get '/lists/:slug/edit' do
