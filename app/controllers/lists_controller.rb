@@ -22,6 +22,11 @@ class ListsController < ApplicationController
         @list = List.create(params["list"])
         @user = current_user
         @user.lists << @list
+        
+        params[:content][:name].each do |name|
+            @list.contents << Content.create(name: name)
+        end
+
         if !params["category"]["name"].empty?
             @list.categories << Category.create(name: params[:category][:name])
         end

@@ -1,0 +1,4 @@
+class ContentsController < ApplicationController
+
+    
+end
