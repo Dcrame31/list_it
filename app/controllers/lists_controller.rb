@@ -58,7 +58,7 @@ class ListsController < ApplicationController
             params[:content][:name].each do |name|
                 @list.contents << Content.create(name: name) if !name.empty?
             end
-            
+
             if !params[:category][:name].empty?
                 @list.categories << Category.create(name: params[:category][:name])
             end
@@ -66,14 +66,6 @@ class ListsController < ApplicationController
             redirect "lists/#{@list.id}"
         else
             redirect '/login'
-        end
-    end
-
-    get '/lists/:id/save' do
-        @list = List.find(params[:id])
-        if logged_in?
-
-        else
         end
     end
 
