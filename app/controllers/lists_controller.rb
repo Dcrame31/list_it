@@ -53,7 +53,8 @@ class ListsController < ApplicationController
     patch '/lists/:id' do
         @list = List.find(params[:id])
         if logged_in?
-            @list.update(params[:list])
+            @list.update(name: params[:list][:name])
+            @list.contents.clear 
             
             params[:content][:name].each do |name|
                 @list.contents << Content.create(name: name) if !name.empty?
