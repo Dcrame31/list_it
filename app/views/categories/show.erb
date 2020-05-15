@@ -4,7 +4,10 @@
 
     <body>
         <header>
-            <%= @category.name %>
+            <h3> <%= @category.name %> </h3>
+            <% @category.lists.each do |list| %>
+            <li><a href="/lists/<%= list.id %>"><%= list.name %></a></li>
+            <% end %>
         </header>
 
 

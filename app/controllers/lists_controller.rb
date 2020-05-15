@@ -20,7 +20,8 @@ class ListsController < ApplicationController
 
     post '/lists' do
         @list = List.create(params["list"])
-
+        @user = current_user
+        @user.lists << @list
         if !params["category"]["name"].empty?
             @list.categories << Category.create(name: params[:category][:name])
         end
@@ -40,6 +41,9 @@ class ListsController < ApplicationController
 
     patch '/lists/:id' do
         
+    end
+
+    get '/lists/:id/delete' do
     end
 
     delete '/lists/:id' do |variable|

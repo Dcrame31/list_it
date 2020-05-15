@@ -6,8 +6,6 @@ class UsersController < ApplicationController
     use Rack::Flash
 
     get '/home' do
-        @lists = List.all
-        @categories = Category.all
         if logged_in?
             @user = current_user
             erb :'users/index'
