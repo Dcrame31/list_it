@@ -5,14 +5,15 @@
     <body>
         <h1><%= @list.name %></h1>
         <p><% @list.contents.each do |content| %></p>
-        <p><input type="checkbox"> <%= content.name %></input></p>
+        <li> <%= content.name %>  </input></li>
         <% end %>
         <p>List created on: <%= @list.created_on %></p>
+        </br>
         <p>Category: <% @list.categories.uniq.each do |category| %></p>
         <li><a href="/categories/<%= category.id %>"><%= category.name %></a> </li>
         <% end %>  
-
-        <p><a href="/lists/<%= @list.id %>"><button type="button">Save</button</a><a href="/lists/<%= @list.id %>/edit"><button type="button">Edit</button></a> <a href="/lists/<%= @list.id %>/delete"><button type="button">Delete</button></a></p>
+        </br>
+        <p><a href="/lists/<%= @list.id %>/save"><button type="button">Save</button</a><a href="/lists/<%= @list.id %>/edit"><button type="button">Edit</button></a> <a href="/lists/<%= @list.id %>/delete"><button type="button">Delete</button></a></p>
 
         <p><a href="/">Home</a></p>
         <p><a href="/logout">Log Out</a></p>
