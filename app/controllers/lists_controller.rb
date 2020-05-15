@@ -42,6 +42,9 @@ class ListsController < ApplicationController
         
     end
 
+    get '/lists/:id/delete' do
+    end
+
     delete '/lists/:id' do |variable|
         
     end

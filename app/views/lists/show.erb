@@ -4,11 +4,16 @@
 
     <body>
         <h1><%= @list.name %></h1>
-        <p><%= @list.content%></p>
-        
+        <p><%= @list.content.each do |item| %></p>
+        <p><%= @list.created_on %></p>
         <p><% @list.categories.each do |category| %></p>
         <%= category.name %>
-        <% end %>   
+        <% end %>  
+
+        <p><a href="/lists/<%= @list.id %>/edit"><button type="button">Edit</button></a> <a href="/lists/<%= @list.id %>/delete"><button type="button">Delete</button></a></p>
+
+        <p><a href="/">Home</a></p>
+        <p><a href="/logout">Log Out</a></p>
     </body> 
 
 
