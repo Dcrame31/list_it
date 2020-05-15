@@ -10,10 +10,18 @@
     <body>
         <h1>Welcome, <%= @user.username%>!</h1>
             <h3>Lists</h3>
+            <% if @user.lists.empty? %>
+            <%= "You currently do not have any lists" %>
+            <% end %>
+
             <% @user.lists.each do |list| %>
             <li><a href="/lists/<%= list.id %>"><%= list.name %></a></li>
             <% end %>
             <h3>Categories</h3>
+            <% if @user.categories.empty? %>
+            <%= "You currently do not have any categories" %>
+            <% end %>
+
             <% @user.categories.each do |category| %>
             <li><a href="/categories/<%= category.id %>"><%= category.name %></a></li>
             <% end %>

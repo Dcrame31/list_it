@@ -20,7 +20,8 @@ class ListsController < ApplicationController
 
     post '/lists' do
         @list = List.create(params["list"])
-
+        @user = current_user
+        @user.lists << @list
         if !params["category"]["name"].empty?
             @list.categories << Category.create(name: params[:category][:name])
         end

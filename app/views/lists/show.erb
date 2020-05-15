@@ -4,8 +4,8 @@
 
     <body>
         <h1><%= @list.name %></h1>
-        <p><%= @list.content.each do |item| %></p>
-        <p><%= @list.created_on %></p>
+        <p><%= @list.content%></p>
+        <p>List created on: <%= @list.created_on %></p>
         <p><% @list.categories.each do |category| %></p>
         <%= category.name %>
         <% end %>  
