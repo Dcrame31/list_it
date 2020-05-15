@@ -46,10 +46,23 @@ class ListsController < ApplicationController
     end
 
     patch '/lists/:id' do
-        
+        @list = List.find(params[:id])
+        if logged_in?
+            @list.update(params[:list])
+            @list.save
+        else
+            redirect '/login'
+        end
     end
 
     get '/lists/:id/delete' do
+        @list = List.find(params[:id])
+        if logged_in?
+            @list.delete
+            redirect '/home'
+        else
+            redirect '/login'
+        end
     end
 
     delete '/lists/:id' do |variable|

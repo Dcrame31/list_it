@@ -10,7 +10,7 @@
         <div>   
             <form action="/lists/<%= @list.id %>" method="POST">
                 <input type="hidden" id="hidden" name="_method" value="PATCH">
-                <p><h2>List name:</h2> <input type="text" name="list[name]"></p>
+                <p><h2>List name:</h2> <input type="text" name="list[name]" value="<%= @list.name%>"></p>
                 <p><h2>Things to do: </h2> </p>
                 <p><input type="text" name="list[content][]" value="<%= @list.content %>"></p>
                 <p><input type="text" name="list[content][]"></p>
