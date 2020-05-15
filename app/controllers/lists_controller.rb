@@ -1,4 +1,9 @@
+require 'sinatra/base'
+require 'rack-flash'
+
 class ListsController < ApplicationController
+    enable :sessions
+    use Rack::Flash
 
     get '/lists' do
         if logged_in?
@@ -31,7 +36,7 @@ class ListsController < ApplicationController
             @list.categories << Category.create(name: params[:category][:name])
         end
         @list.save
-
+        flash[:message] = "Successfully created list"
         redirect "/lists/#{@list.id}"
     end
 
@@ -64,6 +69,7 @@ class ListsController < ApplicationController
                 @list.categories << Category.create(name: params[:category][:name])
             end
             @list.save
+            flash[:message] = "Successfully updated list"
             redirect :"/lists/#{@list.id}"
         else
             redirect '/login'
@@ -74,6 +80,7 @@ class ListsController < ApplicationController
         @list = List.find(params[:id])
         if logged_in?
             @list.delete
+            flash[:message] = "Successfully deleted list"
             redirect '/home'
         else
             redirect '/login'
