@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 2020_05_15_013606) do
     t.string "name"
     t.string "content"
     t.integer "user_id"
-    t.date "created_on"
-    t.date "update_on"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

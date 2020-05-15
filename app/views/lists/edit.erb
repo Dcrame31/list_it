@@ -4,26 +4,34 @@
 
     <body>
         <header>
-            <h1>Create a new list</h1>     
+            <h1>Edit list</h1>     
         </header>
 
-        <div>   
+        <div class="form">   
             <form action="/lists/<%= @list.id %>" method="POST">
                 <input type="hidden" id="hidden" name="_method" value="PATCH">
-                <p><h2>List name:</h2> <input type="text" name="list[name]" value="<%= @list.name%>"></p>
+                <p><h2>List name:</h2> <input type="text" name="list[name]" value="<%= @list.name %>"></p>
+                
                 <p><h2>Things to do: </h2> </p>
-                <p><input type="text" name="list[content][]" value="<%= @list.content %>"></p>
-                <p><input type="text" name="list[content][]"></p>
-                <p><input type="text" name="list[content][]"></p>
-                <p><input type="text" name="list[content][]"></p>
-                <p><input type="text" name="list[content][]"></p>
+                <% @list.contents.each do |content| %>
+                <p><input type="text" value="<%= content.name %>">
+                <% end %>
+                
+                </br>
+                <p><h2>Add things to do:</h2></p>
+                <p><input type="text" name="content[name][]"></p>
+                <p><input type="text" name="content[name][]"></p>
+                <p><input type="text" name="content[name][]"></p>
+                <p><input type="text" name="content[name][]"></p>
+                <p><input type="text" name="content[name][]"></p>
+                </br>
 
                 <p><h2>Choose from existing categories or create a new one: </h2</p>
-                <p><% @user.categories.each do |category| %>
+                <p><% @user.categories.uniq.each do |category| %>
                 <li><input type="checkbox" id="<%= category.id %>" value="<%= category.id %>" name="list[category_ids][]" <%= 'checked' if @user.categories.include?(category) %>><%= category.name %></li>
                 <% end %>
                 <p><h2><input type="text" name="category[name]"></h2>
-                <p><input type="submit" value="Create List"></p>
+                <p><input type="submit" value="Save List"></p>
             </form>
 
             <p><a href="/">Home</p>

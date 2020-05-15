@@ -24,7 +24,7 @@ class ListsController < ApplicationController
         @user.lists << @list
         
         params[:content][:name].each do |name|
-            @list.contents << Content.create(name: name)
+            @list.contents << Content.create(name: name) if !name.empty?
         end
 
         if !params["category"]["name"].empty?
@@ -55,11 +55,15 @@ class ListsController < ApplicationController
         if logged_in?
             @list.update(params[:list])
             
+            params[:content][:name].each do |name|
+                @list.contents << Content.create(name: name) if !name.empty?
+            end
+
             if !params[:category][:name].empty?
                 @list.categories << Category.create(name: params[:category][:name])
             end
             @list.save
-            redirect "lists/#{@list.id}"
+            redirect :"/lists/#{@list.id}"
         else
             redirect '/login'
         end
@@ -74,10 +78,5 @@ class ListsController < ApplicationController
             redirect '/login'
         end
     end
-
-    delete '/lists/:id' do |variable|
-        
-    end
-
 
 end

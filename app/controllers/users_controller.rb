@@ -49,9 +49,6 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             flash[:message] = "You are now logged in"
             redirect to '/home'
-        elsif !User.all.include?(params[:username])
-            flash[:notice] = "Username does not exist"
-            redirect '/'
         else
             redirect '/login'
         end
@@ -63,6 +60,17 @@ class UsersController < ApplicationController
             redirect '/'
         else
             redirect '/home'
+        end
+    end
+
+    get '/delete' do    
+        if logged_in?
+            @user = current_user
+            @user.delete
+            session.clear
+            redirect '/'
+        else
+            redirect '/login'
         end
     end
 
