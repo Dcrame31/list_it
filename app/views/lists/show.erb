@@ -6,8 +6,8 @@
         <h1><%= @list.name %></h1>
         <p><%= @list.content%></p>
         <p>List created on: <%= @list.created_on %></p>
-        <p><% @list.categories.each do |category| %></p>
-        <%= category.name %>
+        <p>Category: <% @list.categories.each do |category| %></p>
+        <li><a href="/categories/<%= category.id %>"><%= category.name %></a> </li>
         <% end %>  
 
         <p><a href="/lists/<%= @list.id %>/edit"><button type="button">Edit</button></a> <a href="/lists/<%= @list.id %>/delete"><button type="button">Delete</button></a></p>

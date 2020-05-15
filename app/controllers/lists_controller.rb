@@ -36,14 +36,38 @@ class ListsController < ApplicationController
     end
 
     get '/lists/:id/edit' do
-        
+        @list = List.find(params[:id])
+        if logged_in?
+            @user = current_user
+            erb :'lists/edit'
+        else
+            redirect '/login'
+        end
     end
 
     patch '/lists/:id' do
-        
+        @list = List.find(params[:id])
+        if logged_in?
+            @list.update(params[:list])
+            
+            if !params[:category][:name].empty?
+                @list.categories << Category.create(name: params[:category][:name])
+            end
+            @list.save
+            redirect "lists/#{@list.id}"
+        else
+            redirect '/login'
+        end
     end
 
     get '/lists/:id/delete' do
+        @list = List.find(params[:id])
+        if logged_in?
+            @list.delete
+            redirect '/home'
+        else
+            redirect '/login'
+        end
     end
 
     delete '/lists/:id' do |variable|
