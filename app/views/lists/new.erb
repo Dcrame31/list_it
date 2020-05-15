@@ -11,14 +11,14 @@
             <form action="/lists" method="POST">
                 <p><h2>List name:</h2> <input type="text" name="list[name]"></p>
                 <p><h2>Things to do: </h2> </p>
-                <p><input type="text" name="list[content][]"></p>
-                <p><input type="text" name="list[content][]"></p>
-                <p><input type="text" name="list[content][]"></p>
-                <p><input type="text" name="list[content][]"></p>
-                <p><input type="text" name="list[content][]"></p>
+                <p><input type="text" name="content[name][]"></p>
+                <p><input type="text" name="content[name][]"></p>
+                <p><input type="text" name="content[name][]"></p>
+                <p><input type="text" name="content[name][]"></p>
+                <p><input type="text" name="content[name][]"></p>
 
                 <p><h2>Choose from existing categories or create a new one: </h2</p>
-                <p><% @user.categories.each do |category| %>
+                <p><% @user.categories.uniq.each do |category| %>
                 <li><input type="checkbox" id="<%= category.id %>" value="<%= category.id %>" name="list[category_ids][]"><%= category.name %></li>
                 <% end %>
                 <p><h2><input type="text" name="category[name]"></h2>
