@@ -55,6 +55,10 @@ class ListsController < ApplicationController
         if logged_in?
             @list.update(params[:list])
             
+            params[:content][:name].each do |name|
+                @list.contents << Content.create(name: name) if !name.empty?
+            end
+            
             if !params[:category][:name].empty?
                 @list.categories << Category.create(name: params[:category][:name])
             end

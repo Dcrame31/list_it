@@ -11,10 +11,20 @@
             <form action="/lists/<%= @list.id %>" method="POST">
                 <input type="hidden" id="hidden" name="_method" value="PATCH">
                 <p><h2>List name:</h2> <input type="text" name="list[name]" value="<%= @list.name%>"></p>
+                
                 <p><h2>Things to do: </h2> </p>
                 <% @list.contents.each do |content| %>
                 <p><input type="text" value="<%= content.name %>">
                 <% end %>
+                
+                </br>
+                <p><h2>Add things to do:</h2></p>
+                <p><input type="text" name="content[name][]"></p>
+                <p><input type="text" name="content[name][]"></p>
+                <p><input type="text" name="content[name][]"></p>
+                <p><input type="text" name="content[name][]"></p>
+                <p><input type="text" name="content[name][]"></p>
+                </br>
 
                 <p><h2>Choose from existing categories or create a new one: </h2</p>
                 <p><% @user.categories.uniq.each do |category| %>
