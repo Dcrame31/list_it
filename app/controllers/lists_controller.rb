@@ -49,7 +49,12 @@ class ListsController < ApplicationController
         @list = List.find(params[:id])
         if logged_in?
             @list.update(params[:list])
+            
+            if !params[:category][:name].empty?
+                @list.categories << Category.create(name: params[:category][:name])
+            end
             @list.save
+            redirect "lists/#{@list.id}"
         else
             redirect '/login'
         end
