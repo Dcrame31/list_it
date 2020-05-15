@@ -54,6 +54,7 @@ class ListsController < ApplicationController
         @list = List.find(params[:id])
         if logged_in?
             @list.update(params[:list])
+            @list.contents.update(params[:contents][:name])
             
             params[:content][:name].each do |name|
                 @list.contents << Content.create(name: name) if !name.empty?

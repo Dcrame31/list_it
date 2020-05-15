@@ -14,7 +14,7 @@
                 
                 <p><h2>Things to do: </h2> </p>
                 <% @list.contents.each do |content| %>
-                <p><input type="text" value="<%= content.name %>">
+                <p><input type="text" name="list[contents][][name]" value="<%= content.name %>">
                 <% end %>
                 
                 </br>
