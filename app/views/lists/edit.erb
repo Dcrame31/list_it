@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <head>
+    </head>
+
+    <body>
+        <header>
+            <h1>Create a new list</h1>     
+        </header>
+
+        <div>   
+            <form action="/lists/<%= @list.id %>" method="POST">
+                <input type="hidden" id="hidden" name="_method" value="PATCH">
+                <p><h2>List name:</h2> <input type="text" name="list[name]"></p>
+                <p><h2>Things to do: </h2> </p>
+                <p><input type="text" name="list[content][]" value="<%= @list.content %>"></p>
+                <p><input type="text" name="list[content][]"></p>
+                <p><input type="text" name="list[content][]"></p>
+                <p><input type="text" name="list[content][]"></p>
+                <p><input type="text" name="list[content][]"></p>
+
+                <p><h2>Choose from existing categories or create a new one: </h2</p>
+                <p><% @user.categories.each do |category| %>
+                <li><input type="checkbox" id="<%= category.id %>" value="<%= category.id %>" name="list[category_ids][]" <%= 'checked' if @user.categories.include?(category) %>><%= category.name %></li>
+                <% end %>
+                <p><h2><input type="text" name="category[name]"></h2>
+                <p><input type="submit" value="Create List"></p>
+            </form>
+
+            <p><a href="/">Home</p>
+            <p><a href="/logout">Log Out</a>
+        </div>
+    </body>
+</html>
