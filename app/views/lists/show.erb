@@ -7,7 +7,7 @@
         <p><% @list.contents.each do |content| %></p>
         <li> <%= content.name %>  </input></li>
         <% end %>
-        <p>List created on: <%= @list.created_on %></p>
+        <p>List created on: <%= @list.created_at %></p>
         </br>
         <p>Category: <% @list.categories.uniq.each do |category| %></p>
         <li><a href="/categories/<%= category.id %>"><%= category.name %></a> </li>

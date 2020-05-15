@@ -4,8 +4,7 @@ class CreateLists < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :content
       t.integer :user_id
-      t.date :created_on
-      t.date :update_on
+      t.timestamps 
     end
   end
 end

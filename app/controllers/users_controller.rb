@@ -63,4 +63,15 @@ class UsersController < ApplicationController
         end
     end
 
+    get '/delete' do    
+        if logged_in?
+            @user = current_user
+            @user.delete
+            session.clear
+            redirect '/'
+        else
+            redirect '/login'
+        end
+    end
+
 end

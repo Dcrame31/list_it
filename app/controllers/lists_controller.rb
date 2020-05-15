@@ -63,7 +63,7 @@ class ListsController < ApplicationController
                 @list.categories << Category.create(name: params[:category][:name])
             end
             @list.save
-            redirect "lists/#{@list.id}"
+            redirect :"/lists/#{@list.id}"
         else
             redirect '/login'
         end
@@ -78,10 +78,5 @@ class ListsController < ApplicationController
             redirect '/login'
         end
     end
-
-    delete '/lists/:id' do |variable|
-        
-    end
-
 
 end
