@@ -56,7 +56,7 @@ class ListsController < ApplicationController
             @list.update(name: params[:list][:name])
             @list.contents.clear 
             
-            params[:list][:contents][:name].each do |name|
+            params[:content][:name].each do |name|
                 @list.contents << Content.create(name: name) if !name.empty?
             end
 
