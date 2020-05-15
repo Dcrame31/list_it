@@ -63,6 +63,15 @@ class UsersController < ApplicationController
         end
     end
 
+    get '/users/delete' do
+        if logged_in?
+            @user = current_user
+            erb :'users/delete'
+        else
+            redirect '/login'
+        end
+    end
+
     get '/delete' do    
         if logged_in?
             @user = current_user
