@@ -30,9 +30,11 @@
 
                 <p><h3>Choose from existing categories or create a new one: </h3></p>
             <div class="content">
-                <p><% @user.categories.uniq.each do |category| %>
-                <li><input type="checkbox" id="<%= category.id %>" value="<%= category.id %>" name="categories[]" <%= 'checked' if @list.categories.include?(category) %>><%= category.name %></li>
-                <% end %>
+                <ol>
+                    <p><% @user.categories.uniq.each do |category| %>
+                    <li><input type="checkbox" id="<%= category.id %>" value="<%= category.id %>" name="categories[]" <%= 'checked' if @list.categories.include?(category) %>><%= category.name %></li>
+                    <% end %>
+                </ol>
             </div>
                 <p><h2><input type="text" name="category[name]"></h2>
                 <p><input type="submit" value="Save List"></p>

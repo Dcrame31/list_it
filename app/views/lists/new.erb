@@ -24,9 +24,11 @@
 
                 <p><h3>Choose from existing categories or create a new one: </h3></p>
             <div class="content">
-                <p><% @user.categories.uniq.each do |category| %>
-                <li><input type="checkbox" id="<%= category.id %>" value="<%= category.id %>" name="list[category_ids][]"><%= category.name %></li>
-                <% end %>
+                <ol>
+                    <p><% @user.categories.uniq.each do |category| %>
+                    <li><input type="checkbox" id="<%= category.id %>" value="<%= category.id %>" name="list[category_ids][]"><%= category.name %></li>
+                    <% end %>
+                </ol>
                 <p><h3><input type="text" name="category[name]"></h3>
             </div>
                 <p><input type="submit" value="Create List"></p>
