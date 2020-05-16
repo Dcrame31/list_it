@@ -16,9 +16,11 @@
       </header>
 
       <div class="content">
-        <p><% @list.contents.each do |content| %></p>
-        <li> <%= content.name %>  </input></li>
-        <% end %>
+        <ol>
+          <p><% @list.contents.each do |content| %></p>
+          <li> <%= content.name %>  </input></li>
+          <% end %>
+        </ol>
       </div>
         <br>
         <p>List created on: <%= @list.created_at %></p>

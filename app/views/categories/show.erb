@@ -9,9 +9,11 @@
             <h3> <%= @category.name %> </h3>
         </header>
         <div class="content">
-            <% @category.lists.sort.uniq.each do |list| %>
-            <li><a href="/lists/<%= list.id %>"><%= list.name %></a></li>
-            <% end %>
+            <ol>
+                <% @category.lists.sort.uniq.each do |list| %>
+                <li><a href="/lists/<%= list.id %>"><%= list.name %></a></li>
+                <% end %>
+            </ol>
         </div>
         <br>
         <br>
