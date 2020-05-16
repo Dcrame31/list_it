@@ -67,14 +67,15 @@ class ListsController < ApplicationController
                 @list.contents << Content.create(name: name) if !name.empty?
             end
 
-            @categories = Category.all.find(params[:categories])
-
             @list.categories.clear
-
-            @list.categories << @categories
 
             if !params[:category][:name].empty?
                 @list.categories << Category.create(name: params[:category][:name])
+            end
+
+            if !params[:categories].nil?
+                @categories = Category.all.find(params[:categories])
+                @list.categories << @categories
             end
 
             @list.save
