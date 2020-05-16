@@ -33,6 +33,7 @@ footer {
 }
 
 .message {
-    color: red;
-    background-color: green;
+    color: black;
+    background-color: rgb(252, 215, 7);
+    border: 2px dotted;
 }
