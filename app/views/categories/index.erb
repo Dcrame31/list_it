@@ -7,11 +7,15 @@
     <div class="wrapper">
         <header> 
             <h1><%= @user.username %>'s categories </h1>
-                <% @user.categories.each do |category| %>
-            <li><a href="/categories/<%= category.id %>"><%= category.name %></a></li>
-                <% end %>
         </header>
 
+        <div class="content">
+                <% @user.categories.uniq.each do |category| %>
+            <li><a href="/categories/<%= category.id %>"><%= category.name %></a></li>
+                <% end %>
+        </div>
+        <br>
+        <br>
         <footer>
             <a href="/">Home</a>
             <a href="/logout">Log Out</a>

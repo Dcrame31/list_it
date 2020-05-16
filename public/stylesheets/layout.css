@@ -20,11 +20,16 @@ body, html {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.content {
+    display: inline-block;
+    text-align: left;
+}
+
 footer {
     font-size: 1em;
     display: inline-block;
     padding: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .wrapper h3 {

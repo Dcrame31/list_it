@@ -12,23 +12,26 @@
         <header>
         <h1>Welcome, <%= @user.username%>!</h1>
         </header>
+        
             <h3>Lists</h3>
+        
             <% if @user.lists.empty? %>
             <%= "You currently do not have any lists" %>
             <% end %>
-
+        <div class="content">
             <% @user.lists.each do |list| %>
             <li><a href="/lists/<%= list.id %>"><%= list.name %></a></li>
             <% end %>
+        </div>
             <h3>Categories</h3>
             <% if @user.categories.empty? %>
             <%= "You currently do not have any categories" %>
             <% end %>
-
+        <div class="content">
             <% @user.categories.uniq.each do |category| %>
             <li><a href="/categories/<%= category.id %>"><%= category.name %></a></li>
             <% end %>
-            
+        </div>
             <h3><a href="/lists/new">Create a new list!</a></h3>
             
             <footer>

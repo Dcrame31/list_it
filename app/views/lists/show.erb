@@ -14,15 +14,21 @@
       <header>
         <h1><%= @list.name %></h1>
       </header>
+
+      <div class="content">
         <p><% @list.contents.each do |content| %></p>
         <li> <%= content.name %>  </input></li>
         <% end %>
+      </div>
         <br>
         <p>List created on: <%= @list.created_at %></p>
         <br>
-        <p>Category: <% @list.categories.uniq.each do |category| %></p>
+        <p>Category: 
+      <div class="content">
+        <% @list.categories.uniq.each do |category| %></p>
         <li><a href="/categories/<%= category.id %>"><%= category.name.capitalize %></a> </li>
         <% end %>  
+      </div>
         <br>
         <p><a href="/lists/<%= @list.id %>/edit"><button type="button">Edit</button></a> <a href="/lists/<%= @list.id %>/delete"><button type="button">Delete</button></a></p>
         <footer>

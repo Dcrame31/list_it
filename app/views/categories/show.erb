@@ -7,12 +7,14 @@
     <div class="wrapper">
         <header>
             <h3> <%= @category.name %> </h3>
+        </header>
+        <div class="content">
             <% @category.lists.sort.uniq.each do |list| %>
             <li><a href="/lists/<%= list.id %>"><%= list.name %></a></li>
             <% end %>
-        </header>
-
-
+        </div>
+        <br>
+        <br>
         <footer>
             <a href="/">Home</a>
             <a href="/logout">Log Out</a>

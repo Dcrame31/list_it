@@ -14,10 +14,11 @@
                 <p><h3>List name:</h3> <input type="text" name="list[name]" value="<%= @list.name %>"></p>
                 
                 <p><h3>Things to do: </h3> </p>
+            <div class="content">
                 <% @list.contents.each do |content| %>
                 <p><input type="text" name="content[name][]" value="<%= content.name %>">
                 <% end %>
-                
+            </div>   
                 </br>
                 <p><h3>Add things to do:</h3></p>
                 <p><input type="text" name="content[name][]"></p>
@@ -28,9 +29,11 @@
                 </br>
 
                 <p><h3>Choose from existing categories or create a new one: </h3></p>
+            <div class="content">
                 <p><% @user.categories.uniq.each do |category| %>
                 <li><input type="checkbox" id="<%= category.id %>" value="<%= category.id %>" name="categories[]" <%= 'checked' if @list.categories.include?(category) %>><%= category.name %></li>
                 <% end %>
+            </div>
                 <p><h2><input type="text" name="category[name]"></h2>
                 <p><input type="submit" value="Save List"></p>
             </form>
