@@ -28,7 +28,8 @@ class UsersController < ApplicationController
         if params[:username] == "" || params[:email] == "" || params[:password] == ""
             redirect '/signup'
         elsif !EmailAddress.valid?(params[:email])
-            redirect '/signup'
+            flash[:message] = "Please enter valid email address"
+            erb :'/users/signup'
         elsif @user.save
             session[:user_id] = @user.id
             redirect '/login'
@@ -49,7 +50,6 @@ class UsersController < ApplicationController
 
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
-            flash[:message] = "You are now logged in"
             redirect to '/home'
         else
             redirect '/login'
