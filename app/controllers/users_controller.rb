@@ -27,6 +27,9 @@ class UsersController < ApplicationController
         @user = User.new(username: params[:username], email: params[:email], password: params[:password])
         if params[:username] == "" || params[:email] == "" || params[:password] == ""
             redirect '/signup'
+        elsif !params[:username].nil?
+            flash[:message] = "Username already exists"
+            erb :'/users/signup'
         elsif !EmailAddress.valid?(params[:email])
             flash[:message] = "Please enter valid email address"
             erb :'/users/signup'
