@@ -1,3 +1,4 @@
+
 # List It!
 
 Simple app for creating lists for whatever your heart desires. Lists are organized in categories, which may be created, edited, and deleted. 
@@ -13,11 +14,9 @@ To use this app:
 * copy and paste given url in browser e.g. 'localhost:9292'
 
 
-
 ## Authors
 
 **Dianne Crame** 
-
 
 
 ## License
