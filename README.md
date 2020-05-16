@@ -8,9 +8,9 @@ Simple app for creating lists for whatever your heart desires. Lists are organiz
 To use this app:
 
 * clone file
-* run bundle
-* rake db:migrate
-* run shotgun
+* run 'bundle'
+* run 'rake db:migrate'
+* run 'shotgun'
 * copy and paste given url in browser e.g. 'localhost:9292'
 
 
