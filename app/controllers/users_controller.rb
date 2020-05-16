@@ -27,9 +27,8 @@ class UsersController < ApplicationController
         @user = User.new(username: params[:username], email: params[:email], password: params[:password])
         if params[:username] == "" || params[:email] == "" || params[:password] == ""
             redirect '/signup'
-            if !params[:email].match(/\A[a-z0-9\+\-_\.]+@[a-z\d\-.]+\.[a-z]+\z/i)
-                redirect '/signup'
-            end
+        elsif !EmailAddress.valid?(params[:email])
+            redirect '/signup'
         elsif @user.save
             session[:user_id] = @user.id
             redirect '/login'
