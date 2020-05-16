@@ -11,7 +11,7 @@ To use this app:
 * run 'bundle'
 * run 'rake db:migrate'
 * run 'shotgun'
-* copy and paste given url in browser e.g. 'localhost:9292'
+* copy and paste given url in browser e.g. 'localhost:9393'
 
 
 ## Authors
