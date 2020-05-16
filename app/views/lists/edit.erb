@@ -1,13 +1,14 @@
 <!DOCTYPE html>
     <head>
+        <link rel="stylesheet" href="/stylesheets/layout.css">
     </head>
 
     <body>
+    <div class="wrapper">
         <header>
             <h1>Edit list</h1>     
         </header>
-
-        <div class="form">   
+ 
             <form action="/lists/<%= @list.id %>" method="POST">
                 <input type="hidden" id="hidden" name="_method" value="PATCH">
                 <p><h2>List name:</h2> <input type="text" name="list[name]" value="<%= @list.name %>"></p>
@@ -34,8 +35,10 @@
                 <p><input type="submit" value="Save List"></p>
             </form>
 
-            <p><a href="/">Home</p>
-            <p><a href="/logout">Log Out</a>
+            <footer>
+                <a href="/">Home</a>
+                <a href="/logout">Log Out</a>
+            </footer>
         </div>
     </body>
 </html>

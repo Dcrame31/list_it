@@ -1,22 +1,35 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
+
+
 <!DOCTYPE html>
     <head>
+      <link rel="stylesheet" href="/stylesheets/layout.css">
     </head>
 
     <body>
+    <div class="wrapper">
+      <header>
         <h1><%= @list.name %></h1>
+      </header>
         <p><% @list.contents.each do |content| %></p>
         <li> <%= content.name %>  </input></li>
         <% end %>
+        <br>
         <p>List created on: <%= @list.created_at %></p>
-        </br>
+        <br>
         <p>Category: <% @list.categories.uniq.each do |category| %></p>
         <li><a href="/categories/<%= category.id %>"><%= category.name.capitalize %></a> </li>
         <% end %>  
-        </br>
+        <br>
         <p><a href="/lists/<%= @list.id %>/edit"><button type="button">Edit</button></a> <a href="/lists/<%= @list.id %>/delete"><button type="button">Delete</button></a></p>
-
-        <p><a href="/">Home</a></p>
-        <p><a href="/logout">Log Out</a></p>
+        <footer>
+          <a href="/">Home</a>
+          <a href="/logout">Log Out</a>
+        </footer>
+      </div>
     </body> 
 
 

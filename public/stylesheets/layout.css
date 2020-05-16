@@ -1,0 +1,23 @@
+header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: bold;
+    padding: 5px;
+    margin: 5px;
+}
+
+body, html {
+    text-align: center;
+    background: url('../black-felt.png');
+}
+
+.wrapper {
+    background-color: #DAEEEF;
+    border: 3px solid;
+}
+
+footer {
+    font-size: 1em;
+    display: inline-block;
+    padding: 5px;
+    margin-bottom: 10px;
+}

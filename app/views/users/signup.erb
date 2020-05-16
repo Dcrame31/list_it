@@ -1,16 +1,22 @@
 <!DOCTYPE html>
     <head>
+        <link rel="stylesheet" href="/stylesheets/layout.css">
     </head>
 
     <body>
-        <div>
+        <div class="wrapper">
             <header>Sign up </header>
-            <form action="/signup" method="POST">
-            <p>Username: <input type="text" name="username"></p>
-            <p>Email: <input type="text" name="email"></p>
-            <p>Password: <input type="password" name="password"></p>
-            <input type="submit" value="Sign Up">
-            </form>
+                <form action="/signup" method="POST">
+                <p>Username: <input type="text" name="username"></p>
+                <p>Email: <input type="text" name="email"></p>
+                <p>Password: <input type="password" name="password"></p>
+                <input type="submit" value="Sign Up">
+                </form>
+
+            <footer> 
+                <a href="/signup">Sign Up</a>
+                <a href="/login">Log In</a>
+            </footer>
         </div>
     </body>
 </html> 

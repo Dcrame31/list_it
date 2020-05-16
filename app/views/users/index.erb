@@ -6,9 +6,12 @@
 <!DOCTYPE html> 
     <head>
     </head>
-
+        <link rel="stylesheet" href="/stylesheets/layout.css">
     <body>
+    <div class="wrapper">
+        <header>
         <h1>Welcome, <%= @user.username%>!</h1>
+        </header>
             <h3>Lists</h3>
             <% if @user.lists.empty? %>
             <%= "You currently do not have any lists" %>
@@ -29,9 +32,9 @@
             <h3><a href="/lists/new">Create a new list!</a></h3>
             
             <footer>
-                <p><a href="/logout">Log out</a></p>
-                <p><a href="/delete">Delete Account</a></p>
+                <a href="/logout">Log Out</a>
+                <a href="/users/delete">Delete Account</a>
             </footer>
-
+        </div>
     </body>
 </html>

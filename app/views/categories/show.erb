@@ -1,8 +1,10 @@
 <!DOCTYPE html>
     <head> 
+        <link rel="stylesheet" href="/stylesheets/layout.css">
     </head>
 
     <body>
+    <div class="wrapper">
         <header>
             <h3> <%= @category.name %> </h3>
             <% @category.lists.sort.uniq.each do |list| %>
@@ -11,10 +13,10 @@
         </header>
 
 
-
-        <p><a href="/">Home</p>
-        <p><a href="/logout">Log Out</a>
-
-
+        <footer>
+            <a href="/">Home</a>
+            <a href="/logout">Log Out</a>
+        </footer>
+    </div>
     </body>
 </html>
