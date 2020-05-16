@@ -3,7 +3,7 @@ header {
     font-style: bold;
     padding: 5px;
     margin: 5px;
-    font-style: bold;
+    font-size: 2vw;
 }
 
 body, html {
@@ -56,4 +56,9 @@ footer {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+  }
+
+  .image {
+      max-width: 20%;
+      max-height: 20%;
   }
