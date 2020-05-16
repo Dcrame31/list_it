@@ -9,8 +9,8 @@
         </header>
   
             <form action="/lists" method="POST">
-                <p><h2>List name:</h2> <input type="text" name="list[name]"></p>
-                <p><h2>Things to do: </h2> </p>
+                <p><h3>List name:</h3> <input type="text" name="list[name]"></p>
+                <p><h3>Things to do: </h3> </p>
                 <p><input type="text" name="content[name][]"></p>
                 <p><input type="text" name="content[name][]"></p>
                 <p><input type="text" name="content[name][]"></p>
@@ -26,7 +26,7 @@
                 <p><% @user.categories.uniq.each do |category| %>
                 <li><input type="checkbox" id="<%= category.id %>" value="<%= category.id %>" name="list[category_ids][]"><%= category.name %></li>
                 <% end %>
-                <p><h2><input type="text" name="category[name]"></h2>
+                <p><h3><input type="text" name="category[name]"></h3>
                 <p><input type="submit" value="Create List"></p>
             </form>
 

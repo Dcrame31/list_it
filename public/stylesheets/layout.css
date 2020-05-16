@@ -7,12 +7,15 @@ header {
 
 body, html {
     text-align: center;
-    background: url('../black-felt.png');
+    background: url('../notebook-dark.png');
+    opacity: 90%;
 }
 
 .wrapper {
     background-color: #DAEEEF;
     border: 3px solid;
+    width: 85%;
+    display: inline-block;
 }
 
 footer {
@@ -20,4 +23,9 @@ footer {
     display: inline-block;
     padding: 5px;
     margin-bottom: 10px;
+}
+
+.wrapper h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: bold;
 }
