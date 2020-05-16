@@ -21,3 +21,8 @@ footer {
     padding: 5px;
     margin-bottom: 10px;
 }
+
+.wrapper h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: bold;
+}
