@@ -1,13 +1,13 @@
 <!DOCTYPE html>
     <head>
     </head>
-
+        <link rel="stylesheet" href="/stylesheets/layout.css">
     <body>
+    <div class="wrapper">
         <header>
             <h1>Create a new list</h1>     
         </header>
-
-        <div>   
+  
             <form action="/lists" method="POST">
                 <p><h2>List name:</h2> <input type="text" name="list[name]"></p>
                 <p><h2>Things to do: </h2> </p>
@@ -30,8 +30,10 @@
                 <p><input type="submit" value="Create List"></p>
             </form>
 
-            <p><a href="/">Home</p>
-            <p><a href="/logout">Log Out</a>
+            <footer>
+                <a href="/">Home</a>
+                <a href="/logout">Log Out</a>
+            </footer>
         </div>
     </body>
 </html>
