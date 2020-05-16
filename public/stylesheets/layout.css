@@ -15,10 +15,12 @@ body, html {
 .wrapper {
     background-color: #DAEEEF;
     border: 3px solid;
-    width: 85%;
+    width: 50%;
     display: inline-block;
     font-family: Arial, Helvetica, sans-serif;
     box-shadow: 0px 0px 30px;
+    position: relative;
+    padding: 10% 0;
 }
 
 .content {
@@ -28,9 +30,10 @@ body, html {
 
 footer {
     font-size: 1em;
-    display: inline-block;
+    display: inline-flexbox;
     padding: 5px;
     margin-bottom: 15px;
+    background-color: rgb(169, 204, 238);
 }
 
 .wrapper h3 {
@@ -43,3 +46,14 @@ footer {
     background-color: rgb(252, 215, 7);
     border: 2px dotted;
 }
+
+.button {
+    background-color: rgb(75, 180, 78); 
+    border: 1px solid;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
