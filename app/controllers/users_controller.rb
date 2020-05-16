@@ -28,7 +28,6 @@ class UsersController < ApplicationController
         if params[:username] == "" || params[:email] == "" || params[:password] == ""
             redirect '/signup'
         elsif !EmailAddress.valid?(params[:email])
-            flash[:message] = "Please enter valid email address"
             redirect '/signup'
         elsif @user.save
             session[:user_id] = @user.id
