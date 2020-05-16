@@ -1,5 +1,5 @@
 
-# List it
+# List It!
 
 Simple app for creating lists for whatever your heart desires. Lists are organized in categories, which may be created, edited, and deleted. 
 
