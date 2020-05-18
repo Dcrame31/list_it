@@ -40,7 +40,7 @@ class ListsController < ApplicationController
         end
 
         if !params["category"]["name"].empty?
-            @list.categories = Category.find_or_create_by(name: params[:category][:name])
+            @list.categories << Category.find_or_create_by(name: params[:category][:name])
             
         end
         @list.save
