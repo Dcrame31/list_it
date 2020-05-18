@@ -19,7 +19,11 @@ class ApplicationController < Sinatra::Base
 
     helpers do
 		def logged_in?
-			!!session[:user_id]
+            begin
+                !!User.find(session[:user_id])
+            rescue
+                false
+            end
 		end
 
 		def current_user
