@@ -40,8 +40,8 @@ class ListsController < ApplicationController
         end
 
         if !params["category"]["name"].empty?
-            @category = Category.find_or_create_by(name: params[:category][:name])
-            @list.categories << @category if !@list.categories.include?(@category)
+            @list.categories = Category.find_or_create_by(name: params[:category][:name])
+            
         end
         @list.save
         flash[:message] = "Successfully created list"
@@ -78,8 +78,7 @@ class ListsController < ApplicationController
             @list.categories.clear
 
             if !params[:category][:name].empty?
-                @category = Category.find_or_create_by(name: params[:category][:name])
-                @list.categories << @category if !@list.categories.include?(@category)
+                @list.categories << Category.find_or_create_by(name: params[:category][:name])
             end
 
             if !params[:categories].nil?
