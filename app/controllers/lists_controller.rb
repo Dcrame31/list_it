@@ -24,7 +24,14 @@ class ListsController < ApplicationController
     end
 
     post '/lists' do
-        @list = List.create(params["list"])
+        @list = List.new(params["list"])
+        if !@list.valid?
+            flash[:message] = "List already exists"
+            redirect 'lists/new'
+        else
+            @list.save
+        end
+
         @user = current_user
         @user.lists << @list
         
@@ -33,7 +40,8 @@ class ListsController < ApplicationController
         end
 
         if !params["category"]["name"].empty?
-            @list.categories << Category.create(name: params[:category][:name])
+            @category = Category.find_or_create_by(name: params[:category][:name])
+            @list.categories << @category if !@list.categories.include?(@category)
         end
         @list.save
         flash[:message] = "Successfully created list"
@@ -70,7 +78,8 @@ class ListsController < ApplicationController
             @list.categories.clear
 
             if !params[:category][:name].empty?
-                @list.categories << Category.create(name: params[:category][:name])
+                @category = Category.find_or_create_by(name: params[:category][:name])
+                @list.categories << @category if !@list.categories.include?(@category)
             end
 
             if !params[:categories].nil?

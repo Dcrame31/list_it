@@ -3,4 +3,5 @@ class List < ActiveRecord::Base
     has_many :contents
     has_many :list_categories
     has_many :categories, through: :list_categories
+    validates :name, :presence => true, :uniqueness => true
 end
