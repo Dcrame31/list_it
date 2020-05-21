@@ -24,27 +24,30 @@ class ListsController < ApplicationController
     end
 
     post '/lists' do
-        @list = List.new(params["list"])
         @user = current_user
-        
-        if !!@user.lists.find_by(name:@list.name)
+
+        if params[:list][:name] == "" 
+            flash[:message] = "Please fill in list name "
+            redirect 'lists/new'
+        elsif !!@user.lists.find_by(name:params["list"]["name"])
             flash[:message] = "List already exists"
             redirect 'lists/new'
         else
-            @list.save
+            @list = List.new(params[:list])
         end
 
         @user.lists << @list
-        
+
         params[:content][:name].each do |name|
             @list.contents << Content.create(name: name) if !name.empty?
         end
 
         if !params["category"]["name"].empty?
             @list.categories << Category.find_or_create_by(name: params[:category][:name])
-            
         end
-        @list.save
+
+        validate_entry
+
         flash[:message] = "Successfully created list"
         redirect "/lists/#{@list.id}"
     end
@@ -68,7 +71,13 @@ class ListsController < ApplicationController
         @list = List.find(params[:id])
         
         if logged_in?
-            @list.update(name: params[:list][:name])
+            @user = current_user
+            if params[:list][:name] == ""
+                flash[:message] = "Enter valid list name"
+                redirect "/lists/#{@list.id}/edit"
+            else
+                @list.update(name: params[:list][:name]) 
+            end
 
             @list.contents.clear 
             
@@ -87,7 +96,7 @@ class ListsController < ApplicationController
                 @list.categories << @categories
             end
 
-            @list.save
+            validate_entry
 
             flash[:message] = "Successfully updated list"
 
@@ -105,6 +114,22 @@ class ListsController < ApplicationController
             redirect '/home'
         else
             redirect '/login'
+        end
+    end
+
+    private
+
+    def validate_entry
+        if @list.categories.empty?
+            @list.delete
+            flash[:message] = "Must select category"
+            redirect 'lists/new'
+        elsif @list.contents.empty?
+            @list.delete
+            flash[:message] = "Please list some things"
+            redirect 'lists/new'
+        else 
+            @list.save
         end
     end
 

@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
     end
 
     get '/categories/:id' do
-        @category = Category.find(params[:id])
+        category = Category.find(params[:id])
         if logged_in?
             @user = current_user
             erb :'categories/show'
