@@ -25,14 +25,15 @@ class ListsController < ApplicationController
 
     post '/lists' do
         @list = List.new(params["list"])
-        if !@list.valid?
+        @user = current_user
+        
+        if !!@user.lists.find_by(name:@list.name)
             flash[:message] = "List already exists"
             redirect 'lists/new'
         else
             @list.save
         end
 
-        @user = current_user
         @user.lists << @list
         
         params[:content][:name].each do |name|
