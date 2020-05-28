@@ -25,14 +25,15 @@ class ListsController < ApplicationController
 
     post '/lists' do
         @list = List.new(params["list"])
-        if !@list.valid?
+        @user = current_user
+        
+        if !!@user.lists.find_by(name:@list.name)
             flash[:message] = "List already exists"
             redirect 'lists/new'
         else
             @list.save
         end
 
-        @user = current_user
         @user.lists << @list
         
         params[:content][:name].each do |name|
@@ -40,10 +41,11 @@ class ListsController < ApplicationController
         end
 
         if !params["category"]["name"].empty?
-            @list.categories = Category.find_or_create_by(name: params[:category][:name])
-            
+            @list.categories << Category.find_or_create_by(name: params[:category][:name])
         end
+        
         @list.save
+        
         flash[:message] = "Successfully created list"
         redirect "/lists/#{@list.id}"
     end
@@ -99,6 +101,7 @@ class ListsController < ApplicationController
     get '/lists/:id/delete' do
         @list = List.find(params[:id])
         if logged_in?
+            @user = current_user
             @list.delete
             flash[:message] = "Successfully deleted list"
             redirect '/home'
