@@ -10,8 +10,12 @@
         </header>
         <div class="content">
             <ol>
-                <% @category.lists.sort.uniq.each do |list| %>
-                <li><a href="/lists/<%= list.id %>"><%= list.name %></a></li>
+                <% @user.lists.sort.each do |list| %>
+                    <% if list.categories.include?(@category)%>
+                <li>
+                    <a href="/lists/<%= list.id %>"><%= list.name %></a>
+                </li>
+                    <% end %>
                 <% end %>
             </ol>
         </div>
