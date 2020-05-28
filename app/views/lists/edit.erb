@@ -13,14 +13,18 @@
                 <input type="hidden" id="hidden" name="_method" value="PATCH">
                 <p><h3>List name:</h3> <input type="text" name="list[name]" value="<%= @list.name %>"></p>
                 
+<<<<<<< HEAD
                 <p><h3>Things to do: </h3> </p>
             <div class="content">
+=======
+                <p><h3>Things: </h3> </p>
+>>>>>>> master
                 <% @list.contents.each do |content| %>
                 <p><input type="text" name="content[name][]" value="<%= content.name %>">
                 <% end %>
             </div>   
                 </br>
-                <p><h3>Add things to do:</h3></p>
+                <p><h3>Add things:</h3></p>
                 <p><input type="text" name="content[name][]"></p>
                 <p><input type="text" name="content[name][]"></p>
                 <p><input type="text" name="content[name][]"></p>
